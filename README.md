@@ -1,11 +1,9 @@
-
-````markdown
 # Insurance Prediction App
 
 A full-stack Python application to predict insurance charges (or insurance risk/claim outcomes) using a machine learning model.  
 This repository includes the backend API, model artifacts, and instructions to run locally, test, and deploy.
 
----
+
 
 ## 📌 Project Overview
 
@@ -19,7 +17,7 @@ The model is trained on insurance data and deployed via FastAPI (or Flask/Stream
 - Model serialization & inference
 - Easy deployment with Docker
 
----
+
 
 ## 🚀 Features
 
@@ -29,7 +27,6 @@ The model is trained on insurance data and deployed via FastAPI (or Flask/Stream
 ✔ Modular code base for easy extension  
 ✔ Docker support for containerized deployment
 
----
 
 ## 🧠 Tech Stack
 
@@ -42,9 +39,15 @@ The model is trained on insurance data and deployed via FastAPI (or Flask/Stream
 | Deployment | Docker, Uvicorn |
 | Testing | Pytest (optional) |
 
----
+
 
 ## 🗂 Repository Structure
+
+
+
+
+
+
 
 ```text
 insurance_predication_app/
@@ -68,7 +71,7 @@ insurance_predication_app/
 └── tests/                     # Unit tests
 ````
 
----
+
 
 ## 🔧 Installation – Local Setup
 
@@ -93,7 +96,7 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
----
+
 
 ## 🧪 Run the API
 
@@ -109,7 +112,7 @@ http://127.0.0.1:8000/docs
 
 This gives you interactive Swagger UI for API testing.
 
----
+
 
 ## 📌 API Endpoints
 
@@ -136,7 +139,7 @@ Predict insurance outcome:
 }
 ```
 
----
+
 
 ## 🧠 Model Training (Optional)
 
@@ -148,7 +151,7 @@ python train_model.py --data data/insurance.csv
 
 The script will produce a model file in `model/`.
 
----
+
 
 ## 📦 Docker Deployment
 
@@ -157,7 +160,6 @@ docker build -t insurance_pred_app .
 docker run -p 8000:8000 insurance_pred_app
 ```
 
----
 
 ## 🧪 Testing
 
@@ -167,10 +169,9 @@ If tests are provided:
 pytest
 ```
 
----
 Perfect — below is a **production-ready, interview-grade setup** for your **Insurance Prediction App**, aligned with **FastAPI best practices**, **clean architecture**, and **local Docker development**.
 
----
+
 
 # 1️⃣ Cleaned Project Structure (Recommended)
 
@@ -210,7 +211,7 @@ insurance_prediction_app/
 * Scales well for real production systems
 * Matches FAANG-style backend expectations
 
----
+
 
 # 2️⃣ Detailed API Schema (`schemas.py`)
 
@@ -235,7 +236,7 @@ class InsuranceResponse(BaseModel):
 📌 **Interview tip**
 Using `Literal` gives **strong validation + auto Swagger docs**.
 
----
+
 
 # 3️⃣ Example `.env` File
 
@@ -258,7 +259,7 @@ MODEL_PATH=model/insurance_model.pkl
 * Never hardcode paths or secrets
 * `.env` is ignored via `.gitignore`
 
----
+
 
 # 4️⃣ Supporting Files (Minimal but Clean)
 
@@ -281,7 +282,7 @@ class Settings(BaseSettings):
 settings = Settings()
 ```
 
----
+
 
 ## `model_loader.py`
 
@@ -294,7 +295,7 @@ def load_model():
     return joblib.load(settings.model_path)
 ```
 
----
+
 
 ## `service.py`
 
@@ -311,7 +312,6 @@ def predict_insurance(data: dict) -> float:
     return float(prediction[0])
 ```
 
----
 
 ## `router.py`
 
@@ -329,7 +329,7 @@ def predict(payload: InsuranceRequest):
     return InsuranceResponse(predicted_cost=result)
 ```
 
----
+
 
 ## `main.py`
 
@@ -342,7 +342,7 @@ app = FastAPI(title="Insurance Prediction API")
 app.include_router(router)
 ```
 
----
+
 
 # 5️⃣ Docker Setup
 
@@ -361,7 +361,7 @@ COPY . .
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
----
+
 
 ## `.dockerignore`
 
@@ -372,7 +372,7 @@ venv
 .git
 ```
 
----
+
 
 # 6️⃣ Docker Compose for Local Development
 
@@ -392,7 +392,7 @@ services:
     restart: always
 ```
 
----
+
 
 # 7️⃣ Run Locally (One Command)
 
@@ -406,5 +406,5 @@ Open:
 http://localhost:8000/docs
 ```
 
----
+
 
